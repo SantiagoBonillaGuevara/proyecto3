@@ -1,2 +1,34 @@
-<p>datos-personales works!</p>
-<button (click)="irDatosMedicos()">siguiente</button>
+<form class="form">
+    <p class="title">Tus datos </p>
+    <div class="flex">
+        <label>
+            <input class="input" type="text" placeholder="" required="">
+            <span>Nombre</span>
+        </label>
+        <label>
+            <input class="input" type="text" placeholder="" required="">
+            <span>Apellido</span>
+        </label>
+    </div>  
+    <label>
+        <input class="input" type="number" placeholder="" required="">
+        <span>Numero de documento</span>
+    </label> 
+    <label>
+        <input class="input" type="number" placeholder="" required="">
+        <span>Numero de telefono</span>
+    </label> 
+    <label>
+        <input class="input" type="email" placeholder="" required="">
+        <span>Email</span>
+    </label> 
+    <label>
+        <input class="input" type="text" placeholder="" required="">
+        <span>Municipio</span>
+    </label>
+    <label>
+        <input class="input" type="text" placeholder="" required="">
+        <span>Direccion</span>
+    </label>
+    <button class="submit" (click)="irDatosMedicos()">Siguiente</button>
+</form>
