@@ -1,2 +1,100 @@
-<p>arte works!</p>
-<button (click)="irDatosPersonales()">siguiente</button>
+<form class="form" [formGroup]="arteForm" (ngSubmit)="irDatosPersonales()">
+    <p class="title">Inscripción a artes</p>
+        <label>
+            Disciplina a la que desea entrar:
+            <select id="disciplina" class="input" type="text" placeholder="" required="">
+                <option value="pintura">Pintura</option>
+                <option value="teatro">Teatro</option>
+                <option value="danza">Danza</option>
+                <option value="artes plasticas">Artes plasticas</option>
+            </select>
+        </label>
+        <br>
+        <label>
+            Estilo en que el que se desea enfocar:
+            <select id="estilo" class="input" type="text" placeholder="" required="">
+                <option value="P">Pintura al oleo</option>
+                <option value="P">Pintura acrilica</option>
+                <option value="P">Acuarela</option>
+                <option value="P">Pintura pastel</option>
+                <option value="P">Pintura aerografica</option>
+                <option value="D">Ballet</option>
+                <option value="D">Clasica</option>
+                <option value="D">Popular</option>
+                <option value="D">Moderna</option>
+                <option value="T">Teatro tragedia</option>
+                <option value="T">Teatro comedia</option>
+                <option value="T">Teatro drama</option>
+                <option value="T">Teatro musical</option>
+                <option value="AP">Escultura</option>
+                <option value="AP">Ceramica</option>
+                <option value="AP">Orfebreria</option>
+                <option value="AP">Dibujo</option>
+                <option value="O">Otro</option>
+            </select>
+        </label> 
+        <br>
+    <label>
+        Experiencia previa:
+        <select id="experiencia" class="input" type="text" placeholder="" required="">
+            <option value="ADV">Avanzado</option>
+            <option value="INT">Intermedio</option>
+            <option value="BS">Basico</option>
+            <option value="PR">Principiante</option>
+        </select>
+    </label> 
+    <br>
+    <label>
+        Objetivo con el que entra:
+        <select id="objetivo" class="input" type="text" placeholder="" required="">
+            <option value="A">Aprender</option>
+            <option value="M">Mejorar</option>
+            <option value="C">Conocer gente</option>
+            <option value="PR">Pasar el rato</option>
+            <option value="OT">Otro</option>
+        </select>
+    </label>
+    <br>
+    <label>
+        ¿Cuenta con materiales?
+        <form>
+            <input  type="radio" id="si" name="materiales" value="si">
+            <label for="si">Si</label>
+            
+            <input  type="radio" id="No" name="materiales" value="no">
+            <label for="no">No</label>
+
+        </form>
+    </label>
+    <br>
+    <label>
+        ¿Esta dispuesto a realizar proyectos en grupo?
+        <form>
+            <input type="radio" id="si" name="materiales" value="si">
+            <label for="si">Si</label>
+            
+            <input   type="radio" id="No" name="materiales" value="no">
+            <label for="no">No</label>
+        </form>
+    </label>
+    <br>
+    <label>
+        <label for="fecha">Fecha en la que va a empezar a asistir:</label>
+        <input required type="date" class="input" id="fecha" formControlName="fecha" [min]="fechaActual">
+    </label>
+    
+    <br>
+    <label>
+        <label for="fecha">Horario en el que desea asistir:</label>
+        <select id="horario" class="input" type="text" placeholder="" required="">
+            <option value="H">8:00</option>
+            <option value="H">11:00</option>
+            <option value="H">12:00</option>
+            <option value="H">16:00</option>
+            <option value="H">14:00</option>
+        </select>
+    </label>
+
+    <button class="submit" type="submit">Siguiente</button>
+
+</form>
