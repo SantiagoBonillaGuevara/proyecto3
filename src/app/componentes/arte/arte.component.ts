@@ -9,7 +9,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 })
 
 export class ArteComponent implements OnInit {
-arteForm!:FormGroup;
+arteForm:FormGroup;
 fechaActual: string;
 
 ngOnInit() {
