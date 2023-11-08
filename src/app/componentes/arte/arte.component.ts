@@ -32,7 +32,12 @@ ngOnInit() {
   }
 
   irDatosPersonales(){
-    this.display = 'none';
-    this.router.navigate(['/datosPersonales'])
+    if(this.arteForm.valid){
+      this.display = 'none';
+      this.router.navigate(['/datosPersonales'])
+    }
+    else{
+      alert("Por favor, verificar que cada campo este correctamento llenado")
+    }
   }
 }
