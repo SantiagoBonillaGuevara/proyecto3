@@ -1,7 +1,8 @@
 <form class="form" [formGroup]="medicosForm" >
     <p class="title">Datos medicos</p>
+    <h6>Los campos obligatorios tienen un *</h6>
     <label>
-        EPS en la que esta inscrito:
+        EPS en la que esta inscrito*:
         <select id="eps" class="input" type="text" placeholder="" required="">
             <option value="AL">Aliansalud</option>
             <option value="AIC">Asociación Indigena del Cauca</option>
@@ -25,7 +26,7 @@
         </select>
     </label> 
     <label>
-        Tipo de sangre:
+        Tipo de sangre*:
         <select id="sangre" class="input" type="text" placeholder="" required="">
             <option value="A">A+</option>
             <option value="A">A-</option>
@@ -76,7 +77,7 @@
     </label> 
     <br>
     <label>
-        ¿Ha tenido alguna cirugía?
+        ¿Ha tenido alguna cirugía?*
         <form>
             <input  type="radio" id="si" name="experiencia" value="si" required>
             <label for="si">Si</label>
@@ -92,7 +93,7 @@
     </label>
 
     <label>
-        Vacunas contra covid:
+        Vacunas contra covid*:
         <select id="talla" class="input" type="text" placeholder="" required="">
             <option value="H">1 dosis</option>
             <option value="H">2 dosis</option>
@@ -101,7 +102,7 @@
     </label>
     
     <p>
-        Datos de contacto de emergencia:
+        Datos de contacto de emergencia*:
     </p>
     <div class="flex">
         <br>
