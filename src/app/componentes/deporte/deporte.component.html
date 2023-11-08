@@ -1,2 +1,90 @@
-<p>deporte works!</p>
-<button (click)="irDatosPersonales()">siguiente</button>
+<form class="form" [formGroup]="deporteForm" (ngSubmit)="irDatosPersonales()">
+    <p class="title">Inscripción a deportes</p>
+        <label>
+            Disciplina a la que desea entrar:
+            <select id="disciplina" class="input" type="text" placeholder="" required="">
+                    <option value="DB">Baloncesto</option>
+                    <option value="DV">Voleibol</option>
+                    <option value="DF">Futbol</option>
+                    <option value="DN">Natación</option>
+                    <option value="DP">Pilates</option>
+                    <option value="DY">Yoga</option>
+                    <option value="DT">Tenis</option>
+                <option value="DP">Patinaje</option>
+            </select>
+        </label>
+        <br>
+    <label>
+        Experiencia previa:
+        <select id="experiencia" class="input" type="text" placeholder="" required="">
+            <option value="ADV">Avanzado</option>
+            <option value="INT">Intermedio</option>
+            <option value="BS">Basico</option>
+            <option value="PR">Principiante</option>
+        </select>
+    </label> 
+    <label>
+        Estatura:
+        <select id="estatura" class="input" type="text" placeholder="" required="">
+            <option value="uno">1.30m-1.50m</option>
+            <option value="dos">1-50m-1.70m</option>
+            <option value="tres">1.70m-1.90m</option>
+            <option value="cuatro">1.90m-2.00m</option>
+        </select>
+    </label> 
+    <label>
+        Peso:
+        <select id="peso" class="input" type="text" placeholder="" required="">
+            <option value="uno">40kg-60kg</option>
+            <option value="dos">60kg-80kg</option>
+            <option value="tres">80kg-100kg</option>
+            <option value="cuatro">100kg-120kg</option>
+        </select>
+    </label> 
+    <br>
+    <label>
+        ¿Ha practicado algún deporte antes?
+        <form>
+            <input  type="radio" id="si" name="experiencia" value="si">
+            <label for="si">Si</label>
+            
+            <input  type="radio" id="No" name="experiencia" value="no">
+            <label for="no">No</label>
+
+        </form>
+    </label>
+    <label>
+        Objetivo con el que entra:
+        <select id="objetivo" class="input" type="text" placeholder="" required="">
+            <option value="A">Aprender</option>
+            <option value="M">Mejorar</option>
+            <option value="C">Conocer gente</option>
+            <option value="PR">Pasar el rato</option>
+            <option value="OT">Otro</option>
+        </select>
+    </label>
+    <br>
+    <label>
+            <input class="input" type="text"  id="lesiones">
+            <span>Lesiones previas</span>
+    </label>
+    <br>
+    <label>
+        Seleccione su talla:
+        <select id="talla" class="input" type="text" placeholder="" required="">
+            <option value="H">XS</option>
+            <option value="H">S</option>
+            <option value="H">M</option>
+            <option value="H">L</option>
+            <option value="H">XL</option>
+        </select>
+    </label>
+    <br>
+    <label>
+        <label for="fecha">Fecha en la que va a empezar a asistir:</label>
+        <input required type="date" class="input" id="fecha" formControlName="fecha" [min]="fechaActual">
+    </label>
+    
+    <br>
+    <button class="submit" type="submit">Siguiente</button>
+</form>
