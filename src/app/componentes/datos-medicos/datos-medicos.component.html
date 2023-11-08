@@ -38,17 +38,19 @@
         </select>
     </label> 
     <label>
-        <input class="input" type="text" placeholder="" required="">
+        <input class="input" type="text" placeholder="">
         <span>Alergias</span>
     </label> 
     <label>
-        <input class="input" type="text" placeholder="" required="">
+        <input class="input" type="text" placeholder="">
         <span>Discapacidades</span>
     </label> 
  <br>
     <label>
         Enfermedades Cronicas:
         <br>
+        <input  type="checkbox" placeholder="" required="">
+        <span>Ninguna</span>
         <input  type="checkbox" placeholder="" required="">
         <span>Artritis</span>
         <input  type="checkbox" placeholder="" required="">
@@ -69,15 +71,17 @@
         <span>Alzheimer o demencia</span>
         <input  type="checkbox" placeholder="" required="">
         <span>Enfermedades respiratorias</span>
+        <input  type="checkbox" placeholder="" required="">
+        <span>Otra</span>
     </label> 
     <br>
     <label>
         ¿Ha tenido alguna cirugía?
         <form>
-            <input  type="radio" id="si" name="experiencia" value="si">
+            <input  type="radio" id="si" name="experiencia" value="si" required>
             <label for="si">Si</label>
             
-            <input  type="radio" id="No" name="experiencia" value="no">
+            <input  type="radio" id="No" name="experiencia" value="no" required>
             <label for="no">No</label>
 
         </form>
