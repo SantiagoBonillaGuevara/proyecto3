@@ -17,8 +17,26 @@ export class DatosMedicosComponent {
   @HostBinding('style.display') display = 'block';
   constructor(private fb: FormBuilder, private router: Router){
     this.medicosForm = this.fb.group({
-      
+      eps: ['', Validators.required],
+      sangre: ['', Validators.required],
+      alergias: [''],
+      discapacidades: [''],
+      enfermedadesCronicas: [''],
+      haTenidoCirugia: ['', Validators.required],
+      lesionesPrevias: [''],
+      vacunasCovid: ['', Validators.required],
+      nombresApellidos: ['', Validators.required],
+      telefono: ['', [Validators.required, Validators.pattern('[0-9]*')]] 
     })
+  }
+
+  irConfirmacion(){
+    if(this.medicosForm.valid){
+
+    }
+    else{
+      alert("Porfavor llene todos los campos correctamente")
+    }
   }
 
 }
