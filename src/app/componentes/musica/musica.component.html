@@ -1,2 +1,82 @@
-<p>musica works!</p>
-<button (click)="irDatosPersonales()">siguiente</button>
+<form class="form" [formGroup]="deporteForm" (ngSubmit)="irDatosPersonales()">
+    <p class="title">Inscripción a musica</p>
+        <label>
+            Clase a aplicar:
+            <select id="clase" class="input" type="text" placeholder="" required="">
+                <option value="CA">Canto</option>
+                <option value="GA">Guitarra acustica</option>
+                <option value="GE">Guitarra electrica</option>
+                <option value="BE">Bajo electrico</option>
+                <option value="BA">Bateria</option>
+                <option value="VI">Vientos</option>
+                <option value="IC">Instrumentos de cuerda frotada</option>
+                <option value="BM">Banda marcial</option>
+            </select>
+        </label>
+        <br>
+    <label>
+        Modalidad de preferencia:
+        <select id="modalidad" class="input" type="text" placeholder="" required="">
+            <option value="PER">Personalizada</option>
+            <option value="GRP">Grupal</option>
+            <option value="AMB">Ambas</option>
+        </select>
+    </label> 
+    <label>
+        ¿Tiene experiencia anterior en el ambito musical?:
+        <select id="experiencia" class="input" type="text" placeholder="" required="">
+            <option value="Y">Si</option>
+            <option value="N">No</option>
+        </select>
+    </label>
+    <label>
+        ¿Tiene instrumento propio?:
+        <select id="instrumentoPropio" class="input" type="text" placeholder="" required="">
+            <option value="SI">Si</option>
+            <option value="NO">No</option>
+        </select>
+    </label>
+    <label>
+        Genero musical preferido:
+        <select id="generoPreferido" class="input" type="text" placeholder="" required="">
+            <option value="uno">Rock</option>
+            <option value="dos">Pop</option>
+            <option value="tres">Jazz</option>
+            <option value="cuatro">Country</option>
+            <option value="cinco">Clasica</option>
+            <option value="seis">Folk</option>
+            <option value="siete">Metal</option>
+            <option value="ocho">Blues</option>
+            <option value="nueve">Reggae</option>
+            <option value="diez">Otro</option>
+        </select>
+    </label>
+    <label>
+        ¿Tiene interes en la teoria musical?
+        <select id="interes" class="input" type="text" placeholder="" required="">
+            <option value="IS">Si</option>
+            <option value="IN">No</option>
+        </select>
+    </label>
+    <label>
+        ¿Estaria dispuesto a participar en clases musicales de generos musicales que no sean de su preferencia?
+        <select id="dispuesto" class="input" type="text" placeholder="" required="">
+            <option value="DY">Si</option>
+            <option value="DN">No</option>
+        </select>
+    </label>
+    <label>
+        ¿Tiene interes en participar en eventos gubernamentales?
+        <select id="gubernamentales" class="input" type="text" placeholder="" required="">
+            <option value="SG">Si</option>
+            <option value="NG">No</option>
+        </select>
+    </label>
+    <br>
+    <label>
+        <label for="fecha">Fecha en la que va a empezar a asistir:</label>
+        <input required type="date" class="input" id="fecha" formControlName="fecha" [min]="fechaActual">
+    </label>
+    <br>
+    <button class="submit" type="submit">Siguiente</button>
+</form>
