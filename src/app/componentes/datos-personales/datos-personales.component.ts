@@ -27,11 +27,7 @@ export class DatosPersonalesComponent implements OnInit {
   }
   @HostBinding('style.display') display = 'block';
   irDatosMedicos(){
-    if (this.formulario.valid) {
       this.display = 'none';
       this.router.navigate(['/datosMedicos'])
-    } else {
-      alert("verifique los campos")
-    }
   }
 }
