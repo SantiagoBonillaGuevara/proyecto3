@@ -34,12 +34,10 @@ ngOnInit() {
   }
 //metodo encargado de ir al formulario datos personales, unicamente cuando todos los campos obligatorios estan llenos
   irDatosPersonales(){
-    if(this.arteForm.valid){
       this.display = 'none';
       this.router.navigate(['/datosPersonales'])
-    }
-    else{ //si no, le avisa al usuario que hay un error en el formulario 
+    //si no, le avisa al usuario que hay un error en el formulario 
       alert("Por favor, verificar que cada campo este correctamento llenado")
-    }
+    
   }
 }
