@@ -1,6 +1,7 @@
-import { Component,OnInit,HostBinding } from '@angular/core';
+import { Component,OnInit,HostBinding, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
+import { ServicioService } from '../servicio.service';
 
 @Component({
   selector: 'app-deporte',
@@ -14,9 +15,7 @@ export class DeporteComponent {
     
   }
   @HostBinding('style.display') display = 'block';
-  //metodo constructor, donde se realizan las validaciones del formualrio Deporte
-  constructor(private fb: FormBuilder, private router: Router){
-    //se extrae la fecha actual, para que el usuario no pueda elegir una fecha anterior a la actual
+  constructor(private fb: FormBuilder, private router: Router, private el: ElementRef, private s: ServicioService){
     this.fechaActual = new Date().toISOString().split('T')[0];
 
     this.deporteForm = this.fb.group({
@@ -34,12 +33,13 @@ export class DeporteComponent {
   }
 //metodo encargado de ir a formulario datos personales, unicamente cuando todos los datos estan correctamente diligenciados
   irDatosPersonales(){
-    if(this.deporteForm.valid){
-      this.display = 'none';
-      this.router.navigate(['/datosPersonales'])
-    }
-    else{
-      alert("Ingrese correctamente todos los datos obligatorios")
-    }
+    //extraer datos de los inputs
+    const c = (this.el.nativeElement.querySelector('#disciplina') as HTMLSelectElement);
+    this.s.clase = c.options[c.selectedIndex].text;
+    this.s.fecha = (this.el.nativeElement.querySelector('#fecha') as HTMLInputElement).value;
+    this.s.materiales="no";
+
+    this.display = 'none';
+    this.router.navigate(['/datosPersonales'])
   }
 }

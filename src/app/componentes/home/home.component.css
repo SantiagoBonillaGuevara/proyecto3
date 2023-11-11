@@ -15,7 +15,7 @@
     width: 210px;
     height: 254px;
     border-radius: 4px;
-    background: white;
+    background: #ffffff;
     display: flex;
     gap: 5px;
     padding: .4em;
@@ -28,8 +28,8 @@
     cursor: pointer;
     border-radius: 2px;
     transition: all .5s;
-    background: white;
-    border: 1px solid black;
+    background: #ffffff;
+    border: 1px solid #00bfff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,7 +47,7 @@
     transform: rotate(-90deg);
     transition: all .5s;
     text-transform: uppercase;
-    color: black;
+    color: #00bfff;
     letter-spacing: .1em;
   }
   .card p span img {
@@ -64,7 +64,7 @@
     padding: .5em;
     text-align: center;
     text-transform: uppercase;
-    color: black;
+    color: #00bfff;
     letter-spacing: .1em;
     z-index: 1; /* Asegura que el texto esté sobre la imagen */
 }

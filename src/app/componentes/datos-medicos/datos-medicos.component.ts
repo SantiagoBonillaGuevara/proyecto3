@@ -9,7 +9,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 })
 export class DatosMedicosComponent {
   medicosForm:FormGroup; //se crea el formulario
-
   ngOnInit(){
 
   }
@@ -32,12 +31,7 @@ export class DatosMedicosComponent {
   }
 //metodo que envía el formulario, unicamente cuando todos los campos estan correctamente diligenciados
   irConfirmacion(){
-    if(this.medicosForm.valid){
-
-    }
-    else{
-      alert("Porfavor llene todos los campos correctamente")
-    }
+    this.display = 'none';
+    this.router.navigate(['/confirmacion'])
   }
-
 }
