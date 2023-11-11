@@ -9,11 +9,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 })
 export class DatosMedicosComponent {
   medicosForm:FormGroup;
-
   ngOnInit(){
 
   }
-
   @HostBinding('style.display') display = 'block';
   constructor(private fb: FormBuilder, private router: Router){
     this.medicosForm = this.fb.group({
@@ -29,14 +27,8 @@ export class DatosMedicosComponent {
       telefono: ['', [Validators.required, Validators.pattern('[0-9]*')]] 
     })
   }
-
   irConfirmacion(){
-    if(this.medicosForm.valid){
-
-    }
-    else{
-      alert("Porfavor llene todos los campos correctamente")
-    }
+    this.display = 'none';
+    this.router.navigate(['/confirmacion'])
   }
-
 }

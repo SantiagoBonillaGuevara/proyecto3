@@ -20,4 +20,3 @@ describe('DatosPersonalesComponent', () => {
   });
 
 });
-alert("esta mierda")

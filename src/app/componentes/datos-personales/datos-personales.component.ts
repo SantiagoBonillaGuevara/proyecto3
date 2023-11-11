@@ -1,6 +1,8 @@
-import { Component,OnInit,HostBinding } from '@angular/core';
+import { Component,OnInit,HostBinding, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
+import { ServicioService } from '../servicio.service';
+
 @Component({
   selector: 'app-datos-personales',
   templateUrl: './datos-personales.component.html',
@@ -11,7 +13,7 @@ export class DatosPersonalesComponent implements OnInit {
     
   }
   formulario: FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private el: ElementRef, private s:ServicioService) {
     this.formulario = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
@@ -27,7 +29,15 @@ export class DatosPersonalesComponent implements OnInit {
   }
   @HostBinding('style.display') display = 'block';
   irDatosMedicos(){
-      this.display = 'none';
-      this.router.navigate(['/datosMedicos'])
+    //extraer datos de los inputs
+    this.s.nombre = (this.el.nativeElement.querySelector('#nombre') as HTMLInputElement).value;
+    this.s.apellido = (this.el.nativeElement.querySelector('#apellido') as HTMLInputElement).value;
+    this.s.identificacion = (this.el.nativeElement.querySelector('#identificacion') as HTMLInputElement).value;
+    this.s.correo = (this.el.nativeElement.querySelector('#correo') as HTMLInputElement).value;
+    this.s.telefono = (this.el.nativeElement.querySelector('#telefono') as HTMLInputElement).value;
+
+
+    this.display = 'none';
+    this.router.navigate(['/datosMedicos'])
   }
 }
