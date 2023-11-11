@@ -1,6 +1,7 @@
-import { Component,OnInit,HostBinding } from '@angular/core';
+import { Component,OnInit,HostBinding, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
+import { ServicioService } from '../servicio.service';
 
 @Component({
   selector: 'app-arte',
@@ -16,7 +17,8 @@ ngOnInit() {
 
 }
   @HostBinding('style.display') display = 'block';
-  constructor(private fb: FormBuilder, private router: Router){
+  o: string='';
+  constructor(private fb: FormBuilder, private router: Router, private el: ElementRef, private s: ServicioService){
     this.fechaActual = new Date().toISOString().split('T')[0];
 
     this.arteForm = this.fb.group({
@@ -32,12 +34,16 @@ ngOnInit() {
   }
 
   irDatosPersonales(){
-    if(this.arteForm.valid){
-      this.display = 'none';
-      this.router.navigate(['/datosPersonales'])
+    //extraer datos de los inputs
+    this.s.materiales="si";
+    if(this.o==="si"){
+      this.s.materiales="no";
     }
-    else{
-      alert("Por favor, verificar que cada campo este correctamento llenado")
-    }
+    const c = (this.el.nativeElement.querySelector('#disciplina') as HTMLSelectElement);
+    this.s.clase = c.options[c.selectedIndex].text;
+    this.s.fecha = (this.el.nativeElement.querySelector('#fecha') as HTMLInputElement).value;
+
+    this.display = 'none';
+    this.router.navigate(['/datosPersonales'])
   }
 }

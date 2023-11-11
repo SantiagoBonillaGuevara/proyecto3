@@ -6,6 +6,7 @@ import { DeporteComponent } from './componentes/deporte/deporte.component';
 import { DatosPersonalesComponent } from './componentes/datos-personales/datos-personales.component';
 import { DatosMedicosComponent } from './componentes/datos-medicos/datos-medicos.component';
 import { HomeComponent } from './componentes/home/home.component';
+import { ConfirmacionComponent } from './componentes/confirmacion/confirmacion.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:'deporte', component: DeporteComponent},
   {path:'datosPersonales', component: DatosPersonalesComponent},
   {path:'datosMedicos', component: DatosMedicosComponent},
+  {path:'confirmacion', component: ConfirmacionComponent},
   {path:'**',component: HomeComponent}
 ];
 

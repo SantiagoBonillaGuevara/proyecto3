@@ -1,6 +1,8 @@
-import { Component,HostBinding } from '@angular/core';
+import { Component,HostBinding, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
+import { ServicioService } from '../servicio.service';
+
 @Component({
   selector: 'app-musica',
   templateUrl: './musica.component.html',
@@ -10,7 +12,7 @@ export class MusicaComponent {
   deporteForm!:FormGroup;
   fechaActual: string;
   @HostBinding('style.display') display = 'block';
-  constructor(private fb: FormBuilder, private router: Router){
+  constructor(private fb: FormBuilder, private router: Router, private el: ElementRef, private s: ServicioService){
     this.fechaActual = new Date().toISOString().split('T')[0];
 
     this.deporteForm = this.fb.group({
@@ -26,6 +28,15 @@ export class MusicaComponent {
     });
   }
   irDatosPersonales(){
+    //extraer datos de los inputs
+    this.s.materiales="Si";
+    if((this.el.nativeElement.querySelector('#instrumentoPropio') as HTMLSelectElement).value==="SI"){
+      this.s.materiales="No"
+    }
+    const c = (this.el.nativeElement.querySelector('#clase') as HTMLSelectElement);
+    this.s.clase = c.options[c.selectedIndex].text;
+    this.s.fecha = (this.el.nativeElement.querySelector('#fecha') as HTMLInputElement).value;
+
     this.display = 'none';
     this.router.navigate(['/datosPersonales'])
   }
