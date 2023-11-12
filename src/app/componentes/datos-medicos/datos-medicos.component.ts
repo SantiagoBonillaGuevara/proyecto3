@@ -1,4 +1,4 @@
-import { Component,OnInit,HostBinding } from '@angular/core';
+import { Component,HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 
@@ -9,9 +9,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 })
 export class DatosMedicosComponent {
   medicosForm:FormGroup;
-  ngOnInit(){
-
-  }
+  
   @HostBinding('style.display') display = 'block';
   constructor(private fb: FormBuilder, private router: Router){
     this.medicosForm = this.fb.group({

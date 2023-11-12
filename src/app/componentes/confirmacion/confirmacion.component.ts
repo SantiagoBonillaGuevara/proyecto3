@@ -1,6 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, HostBinding} from '@angular/core';
 import { ServicioService } from '../servicio.service';
 import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirmacion',
@@ -8,25 +9,25 @@ import { DataService } from '../data.service';
   styleUrls: ['./confirmacion.component.css']
 })
 
-export class ConfirmacionComponent implements OnInit {
-  datos= { 
-    Nombre: ''
-  };
-  constructor(public s: ServicioService, private dataService: DataService) { }
-  ngOnInit() {
-    this.dataService.getDatos().subscribe((datos: any) => {
-      this.datos = datos;
-      console.log(datos);
+export class ConfirmacionComponent {
+  @HostBinding('style.display') display = 'block';
+  constructor(public s: ServicioService, private dataService: DataService,private router: Router) { }
+
+  descargarArchivo() {
+    this.dataService.obtenerDatosModificados().subscribe((datos) => {
+      const jsonBlob = new Blob([JSON.stringify(datos)], { type: 'application/json' });
+      const url = window.URL.createObjectURL(jsonBlob);
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      a.style.display = 'none';
+      a.href = url;
+      a.download = this.s.nombre+'_'+this.s.apellido+'_registro.json'; // Nombre del archivo
+      a.click();
+      window.URL.revokeObjectURL(url);
     });
   }
-
-  modificarDatos() {
-    // Modificar datos según sea necesario
-    this.datos.Nombre = 'Nuevo Nombre';
-
-    // Guardar cambios haciendo una solicitud HTTP al servidor
-    this.dataService.guardarDatos(this.datos).subscribe((respuesta) => {
-      console.log('Datos guardados con éxito', respuesta);
-    });
+  volver(){
+    this.display = 'none';
+    this.router.navigate(['/home'])
   }
 }
