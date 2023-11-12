@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { ServicioService } from '../servicio.service';
-import { HttpClient } from '@angular/common/http';
-import { JsonService } from 'src/assets/json.service';
+import { JsonService } from 'src/app/json.service';
+import { Injectable } from '@angular/core';
 
 
 @Component({
