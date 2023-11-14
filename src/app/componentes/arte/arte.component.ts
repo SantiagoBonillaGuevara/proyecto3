@@ -1,6 +1,6 @@
 import { Component,OnInit,HostBinding, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms'
+import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms'
 import { ServicioService } from '../servicio.service';
 
 @Component({
@@ -17,6 +17,7 @@ ngOnInit() {
 
 }
   @HostBinding('style.display') display = 'block';
+
   o: string='';
   constructor(private fb: FormBuilder, private router: Router, private el: ElementRef, private s: ServicioService){
     this.fechaActual = new Date().toISOString().split('T')[0];
@@ -29,21 +30,42 @@ ngOnInit() {
       materiales: ['', Validators.required],
       proyectosEnGrupo: ['', Validators.required],
       fecha: [this.fechaActual, Validators.required],
-      horario: ['', Validators.required]
-    });
+      horario: ['', Validators.required],
+      siMateriales: ['', this.radioButtonValidator()],
+      noMateriales: ['', this.radioButtonValidator()],
+      siProyectos: ['', this.radioButtonValidator()],
+      noProyectos: ['', this.radioButtonValidator()],
+  });
   }
+
+  private radioButtonValidator() {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+        const value = control.value;
+        if (value !== 'si' && value !== 'no') {
+            return { 'invalidRadioButton': true };
+        }
+        return null;
+    };
+}
 //metodo encargado de ir al formulario datos personales, unicamente cuando todos los campos obligatorios estan llenos
   irDatosPersonales(){
     //extraer datos de los inputs
-    this.s.materiales="si";
-    if(this.o==="si"){
-      this.s.materiales="no";
-    }
-    const c = (this.el.nativeElement.querySelector('#disciplina') as HTMLSelectElement);
-    this.s.clase = c.options[c.selectedIndex].text;
-    this.s.fecha = (this.el.nativeElement.querySelector('#fecha') as HTMLInputElement).value;
+    if(this.arteForm.valid){
+      this.s.materiales="si";
+      if(this.o==="si"){
+        this.s.materiales="no";
+      }
+      const c = (this.el.nativeElement.querySelector('#disciplina') as HTMLSelectElement);
+      this.s.clase = c.options[c.selectedIndex].text;
+      this.s.fecha = (this.el.nativeElement.querySelector('#fecha') as HTMLInputElement).value;
+  
+      this.display = 'none';
+      this.router.navigate(['/datosPersonales'])
 
-    this.display = 'none';
-    this.router.navigate(['/datosPersonales'])
+    }
+    else{
+      alert("datos erroneos")
+      console.log("valores", this.arteForm.value)
+    }
   }
 }

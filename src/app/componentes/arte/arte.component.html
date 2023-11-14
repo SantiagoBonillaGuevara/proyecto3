@@ -58,25 +58,22 @@
     <br>
     <label>
         ¿Cuenta con materiales?*
-        <form>
-            <input  type="radio" id="si" name="materiales" value="si" [(ngModel)]="o">
-            <label for="si">Si</label>
+        <div>
+            <input  type="radio" id="siMateriales" name="si" value="si" [(ngModel)]="o" formControlName="materiales">
+            <label for="siMateriales">Si</label>
             
-            <input  type="radio" id="No" name="materiales" value="no" [(ngModel)]="o">
-            <label for="no">No</label>
-
-        </form>
+            <input  type="radio" id="noMateriales" name="materiales" value="no" [(ngModel)]="o" formControlName="materiales">
+            <label for="noMateriales">No</label>
+        </div>
     </label>
     <br>
     <label>
         ¿Esta dispuesto a realizar proyectos en grupo?*
-        <form>
-            <input type="radio" id="si" name="materiales" value="si">
-            <label for="si">Si</label>
+            <input type="radio" id="siProyecto" name="proyectosGrupo" value="si" formControlName="proyectosGrupo">
+            <label for="siProyecto">Si</label>
             
-            <input   type="radio" id="No" name="materiales" value="no">
-            <label for="no">No</label>
-        </form>
+            <input   type="radio" id="noProyecto" name="proyectosGrupo" value="no" formControlName="proyectosGrupo">
+            <label for="noProyecto">No</label>
     </label>
     <br>
     <label>
