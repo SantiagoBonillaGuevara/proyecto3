@@ -1,8 +1,7 @@
-import { Component} from '@angular/core';
+import { Component, HostBinding} from '@angular/core';
 import { ServicioService } from '../servicio.service';
-import { JsonService } from 'src/app/json.service';
-import { Injectable } from '@angular/core';
-
+import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirmacion',
@@ -10,24 +9,25 @@ import { Injectable } from '@angular/core';
   styleUrls: ['./confirmacion.component.css']
 })
 
-
 export class ConfirmacionComponent {
-  constructor(public s:ServicioService, private jsonService: JsonService){}
-  obtenerDatos(): any {
-    return {
-      nombre: this.s.nombre,
-      apellido: this.s.apellido,
-      documento: this.s.identificacion,
-      telefono: this.s.telefono,
-      correo: this.s.correo,
-      clase: this.s.clase,
-      fecha: this.s.fecha,
-      materiales: this.s.materiales
-    };
-  
-  }  
-  crearArchivoJson() {
-    const datos = this.obtenerDatos();
-    this.jsonService.llenarArchivoJson(datos);
+  @HostBinding('style.display') display = 'block';
+  constructor(public s: ServicioService, private dataService: DataService,private router: Router) { }
+
+  descargarArchivo() {
+    this.dataService.obtenerDatosModificados().subscribe((datos) => {
+      const jsonBlob = new Blob([JSON.stringify(datos)], { type: 'application/json' });
+      const url = window.URL.createObjectURL(jsonBlob);
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      a.style.display = 'none';
+      a.href = url;
+      a.download = this.s.nombre+'_'+this.s.apellido+'_registro.json'; // Nombre del archivo
+      a.click();
+      window.URL.revokeObjectURL(url);
+    });
+  }
+  volver(){
+    this.display = 'none';
+    this.router.navigate(['/home'])
   }
 }

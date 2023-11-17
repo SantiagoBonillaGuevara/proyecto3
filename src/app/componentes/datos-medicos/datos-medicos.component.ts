@@ -1,4 +1,4 @@
-import { Component,OnInit,HostBinding } from '@angular/core';
+import { Component,HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 
@@ -8,10 +8,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms'
   styleUrls: ['./datos-medicos.component.css']
 })
 export class DatosMedicosComponent {
-  medicosForm:FormGroup; //se crea el formulario
-  ngOnInit(){
-
-  }
+  medicosForm:FormGroup;
+  
   @HostBinding('style.display') display = 'block';
   //constructor de la clase, en el se realizan las verificacion de los inputs del formulario de datos medicos
   constructor(private fb: FormBuilder, private router: Router){

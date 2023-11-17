@@ -1,29 +1,13 @@
-<div class="notifications-container">
-    <div class="success">
-      <div class="flex">
-        <div class="flex-shrink-0">
-          
-          <svg class="succes-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-          </svg>
-        </div>
-        <div class="success-prompt-wrap">
-          <p class="success-prompt-heading">Order completed
-          </p><div class="success-prompt-prompt">
-                <p>Nombre: {{s.nombre}}</p>
-                <p>Apellido: {{s.apellido}}</p>
-                <p>Numero de documento: {{s.identificacion}}</p>
-                <p>Telefono: {{s.telefono}}</p>
-                <p>Crreo: {{s.correo}}</p>
-                <p>Clase inscrita: {{s.clase}}</p>
-                <p>A partir de: {{s.fecha}}</p>
-                <p>Requiere materiales: {{s.materiales}}</p>
-          </div>
-            <div class="success-button-container">
-              <button type="button" class="success-button-main">Volver</button>
-              <button type="button" class="success-button-secondary" (click) = "crearArchivoJson()">Descargar Comprobante</button>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<p class="title">REGISTRO COMPLETADO</p>
+<label>
+    <p>nombre: {{s.nombre}}</p>
+    <p>apellido: {{s.apellido}}</p>
+    <p>numero de documento: {{s.identificacion}}</p>
+    <p>telefono: {{s.telefono}}</p>
+    <p>correo: {{s.correo}}</p>
+    <p>clase inscrita: {{s.clase}}</p>
+    <p>a partir de: {{s.fecha}}</p>
+    <p>requiere materiales: {{s.materiales}}</p>
+</label>
+<button (click)="descargarArchivo()">descargar</button>
+<button (click)="volver()">volver</button>
