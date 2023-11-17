@@ -18,7 +18,7 @@ export class DatosPersonalesComponent implements OnInit {
     this.datosForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      edad: ['', [Validators.required, Validators.min(10), Validators.max(100)]],
+      edad: ['', [Validators.required, Validators.max(100)]],
       genero: ['', Validators.required],
       tipoDocumento: ['', [Validators.required,Validators.maxLength(10)]],
       identificacion: ['', Validators.required],
@@ -34,7 +34,7 @@ export class DatosPersonalesComponent implements OnInit {
     if(this.datosForm.valid){
       //extraer datos de los inputs
       this.s.nombre = this.datosForm.value.nombre
-      this.s.apellido = this.datosForm.value.apelido
+      this.s.apellido = this.datosForm.value.apellido
       this.s.identificacion = this.datosForm.value.identificacion
       this.s.correo = this.datosForm.value.correo
       this.s.telefono = this.datosForm.value.telefono

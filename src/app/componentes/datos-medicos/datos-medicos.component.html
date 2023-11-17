@@ -1,32 +1,32 @@
 <form class="form" [formGroup]="medicosForm" (ngSubmit)="irConfirmacion()" >
     <p class="title">Datos medicos</p>
     <label>
-        EPS en la que esta inscrito*:
-        <select id="eps" class="input" type="text" placeholder="" required="">
-            <option value="AL">Aliansalud</option>
-            <option value="AIC">Asociación Indigena del Cauca</option>
-            <option value="CS">Capital Salud</option>
-            <option value="CE">Capresoca EPS</option>
-            <option value="CV">Comfenalco Valle EPS</option>
-            <option value="C">Compensar EPS</option>
-            <option value="CSD">Cooperativa de salud y desarrollo integral</option>
-            <option value="F">Famisanar</option>
-            <option value="S">Sanitas</option>
-            <option value="CD">Convidia</option>
-            <option value="CO">Servicio Occidental de Salud</option>
-            <option value="P">Prepagada suramericana</option>
-            <option value="M">Mallamas</option>
-            <option value="NE">Nueva EPS</option>
-            <option value="PS">Pijaos Salud</option>
-            <option value="ST">Salud total</option>
-            <option value="SV">Saludvida</option>
-            <option value="SS">Savia Salud</option>
-            <option value="OTR">Otra</option>
-        </select>
+            EPS en la que esta inscrito*:
+            <select formControlName="eps"  class="input" type="text" placeholder="" required="">
+                <option value="AL">Aliansalud</option>
+                <option value="AIC">Asociación Indigena del Cauca</option>
+                <option value="CS">Capital Salud</option>
+                <option value="CE">Capresoca EPS</option>
+                <option value="CV">Comfenalco Valle EPS</option>
+                <option value="C">Compensar EPS</option>
+                <option value="CSD">Cooperativa de salud y desarrollo integral</option>
+                <option value="F">Famisanar</option>
+                <option value="S">Sanitas</option>
+                <option value="CD">Convidia</option>
+                <option value="CO">Servicio Occidental de Salud</option>
+                <option value="P">Prepagada suramericana</option>
+                <option value="M">Mallamas</option>
+                <option value="NE">Nueva EPS</option>
+                <option value="PS">Pijaos Salud</option>
+                <option value="ST">Salud total</option>
+                <option value="SV">Saludvida</option>
+                <option value="SS">Savia Salud</option>
+                <option value="OTR">Otra</option>
+            </select>
     </label> 
     <label>
         Tipo de sangre*:
-        <select id="sangre" class="input" type="text" placeholder="" required="">
+        <select formControlName="sangre"  class="input" type="text" placeholder="" required="">
             <option value="A">A+</option>
             <option value="A">A-</option>
             <option value="B">B+</option>
@@ -38,62 +38,68 @@
         </select>
     </label> 
     <label>
-        <input class="input" type="text" placeholder="">
+        <input formControlName="alergia" class="input" type="text" placeholder="">
         <span>Alergias</span>
     </label> 
     <label>
-        <input class="input" type="text" placeholder="">
+        <input formControlName="discapacidades" class="input" type="text" placeholder="">
         <span>Discapacidades</span>
     </label> 
  <br>
     <label>
         Enfermedades Cronicas:
         <br>
-        <input  type="checkbox" placeholder="" required="">
-        <span>Ninguna</span>
-        <input  type="checkbox" placeholder="" required="">
-        <span>Artritis</span>
-        <input  type="checkbox" placeholder="" required="">
-        <span>Cáncer</span>
-        <input  type="checkbox" placeholder="" required="">
-        <span>Cardiopatía</span>
-        <input  type="checkbox" placeholder="" required="">
-        <span>Diabetes</span>
-        <input  type="checkbox" placeholder="" required="">
-        <span>Hipertendión</span>
-        <input  type="checkbox" placeholder="" required="">
-        <span>Enfermedad renal crónica</span>
-        <input  type="checkbox" placeholder="" required="">
-        <span>Insuficiencia cardiaca</span>
-        <input  type="checkbox" placeholder="" required="">
-        <span>Depresión</span>
-        <input  type="checkbox" placeholder="" required="">
-        <span>Alzheimer o demencia</span>
-        <input  type="checkbox" placeholder="" required="">
-        <span>Enfermedades respiratorias</span>
-        <input  type="checkbox" placeholder="" required="">
-        <span>Otra</span>
+        <div class="col-sm-2">
+            <input formControlName="enfermedadesCronicas" type="checkbox" placeholder="">
+            <span>Artritis</span>
+            <input formControlName="enfermedadesCronicas" type="checkbox" placeholder="">
+            <span>Cáncer</span>
+            <input formControlName="enfermedadesCronicas" type="checkbox" placeholder="">
+            <span>Cardiopatía</span>
+            <br>
+            <input formControlName="enfermedadesCronicas" type="checkbox" placeholder="">
+            <span>Diabetes</span>
+            <input formControlName="enfermedadesCronicas" type="checkbox" placeholder="">
+            <span>Enfermedad renal crónica</span>
+            <br>
+            <input formControlName="enfermedadesCronicas" type="checkbox" placeholder="">
+            <span>Hipertensión</span>
+    
+            <input formControlName="enfermedadesCronicas" type="checkbox" placeholder="">
+            <span>Insuficiencia cardiaca</span>
+            <br>
+            <input formControlName="enfermedadesCronicas" type="checkbox" placeholder="">
+            <span>Depresión</span>
+            <input formControlName="enfermedadesCronicas" type="checkbox" placeholder="">
+            <span>Alzheimer o demencia</span>
+            <br>
+            <input formControlName="enfermedadesCronicas" type="checkbox" placeholder="">
+            <span>Enfermedades respiratorias</span>
+            <input formControlName="enfermedadesCronicas" type="checkbox" placeholder="">
+            <span>Otra</span>
+        </div>
     </label> 
     <br>
     <label>
         ¿Ha tenido alguna cirugía?*
-        <form>
-            <input  type="radio" id="si" name="experiencia" value="si" required>
-            <label for="si">Si</label>
-            
-            <input  type="radio" id="No" name="experiencia" value="no" required>
-            <label for="no">No</label>
-
-        </form>
+        <label>
+            <input type="radio" formControlName="cirugia" value="si">
+            Si
+          </label>
+    
+          <label>
+            <input type="radio" formControlName="cirugia" value="no">
+            No
+          </label>
     </label>
     <label>
-        <input class="input" type="text" placeholder="" required="">
+        <input formControlName="lesionesPrevia" class="input" type="text">
             <span>Lesiones previas</span>
     </label>
 
     <label>
         Vacunas contra covid*:
-        <select id="talla" class="input" type="text" placeholder="" required="">
+        <select formControlName="vacunas" class="input" type="text" placeholder="" required="">
             <option value="H">1 dosis</option>
             <option value="H">2 dosis</option>
             <option value="H">3 dosis</option>
@@ -106,12 +112,11 @@
     <div class="flex">
         <br>
         <label>
-            <input class="input" type="text" placeholder="" required="">
+            <input formControlName="nombreApellido" class="input" type="text" placeholder="" required="">
             <span>Nombres y apellidos</span>
         </label>
-
         <label>
-            <input class="input" type="number" placeholder="" required="">
+            <input formControlName="telefono" class="input" type="text" placeholder="" required="">
             <span>Telefono</span>
         </label>
     </div>  

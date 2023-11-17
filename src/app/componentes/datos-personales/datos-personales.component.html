@@ -1,5 +1,5 @@
 <form [formGroup]="datosForm" class="form" (ngSubmit)="irDatosMedicos()">
-    <p class="title">Tus datos </p>
+    <p class="title">Tus datos</p>
     <div class="flex">
         <label>
             <input formControlName="nombre" class="input" type="text" placeholder="" required="">
@@ -11,8 +11,8 @@
         </label>
     </div>  
     <label>
-        <input formControlName="edad"class="input" type="number" placeholder="" required="">
-        <span>edad</span>
+        <input formControlName="edad" class="input" type="number" placeholder="" required="">
+        <span>Edad</span>
     </label> 
     <label>
         Genero:
@@ -32,11 +32,11 @@
         </select>
     </label> 
     <label>
-        <input formControlName="identificacion"class="input" type="number" placeholder="" required="">
+        <input formControlName="identificacion"class="input" type="text" placeholder="" required="">
         <span>Numero de documento</span>
     </label> 
     <label>
-        <input formControlName="telefono" class="input" type="number" placeholder="" required="">
+        <input formControlName="telefono" class="input" type="text" placeholder="" required="">
         <span>Numero de telefono</span>
     </label> 
     <label>
