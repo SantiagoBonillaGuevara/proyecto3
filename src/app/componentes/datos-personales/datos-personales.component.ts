@@ -34,6 +34,7 @@ export class DatosPersonalesComponent implements OnInit {
     if(this.datosForm.valid){
       //extraer datos de los inputs
       this.s.nombre = this.datosForm.value.nombre
+      console.log("esta mierda de git")
       this.s.apellido = this.datosForm.value.apellido
       this.s.identificacion = this.datosForm.value.identificacion
       this.s.correo = this.datosForm.value.correo
