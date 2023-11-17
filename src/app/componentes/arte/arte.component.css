@@ -12,6 +12,8 @@
     background-color: white;
     color: #000000;
     border: 1px solid gray;
+    align-self: center;
+    margin: auto;
   }
   
   .title {
@@ -22,17 +24,17 @@
     display: flex;
     align-items: center;
     padding-left: 30px;
-    color: #00bfff;
+    color: #284b63;
   }
   
   .title::before {
     width: 18px;
-    height: 18px;
+    height: 10px;
   }
   
   .title::after {
     width: 18px;
-    height: 18px;
+    height: 10px;
     animation: pulse 1s linear infinite;
   }
   
@@ -44,10 +46,11 @@
     width: 16px;
     border-radius: 50%;
     left: 0px;
-    background-color: #00bfff;
+    background-color: #284b63;
   }
   .form label {
     position: relative;
+    font-weight: bold;
   }
   
   .form label .input {
@@ -77,7 +80,7 @@
   
   .form label .input:focus + span,
   .form label .input:valid + span {
-    color: #00bfff;
+    color: #284b63;
     top: 0px;
     font-size: 0.7em;
     font-weight: 600;
@@ -95,11 +98,11 @@
     color: #fff;
     font-size: 16px;
     transform: .3s ease;
-    background-color: #00bfff;
+    background-color: #284b63;
   }
   
   .submit:hover {
-    background-color: #00bfff96;
+    background-color: #284b63;
   }
   
   @keyframes pulse {

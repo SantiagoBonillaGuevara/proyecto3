@@ -11,22 +11,32 @@ export class DatosMedicosComponent {
   medicosForm:FormGroup;
   
   @HostBinding('style.display') display = 'block';
+  //constructor de la clase, en el se realizan las verificacion de los inputs del formulario de datos medicos
   constructor(private fb: FormBuilder, private router: Router){
     this.medicosForm = this.fb.group({
+      //se verifica unicamente los campos que no son obligatorios
       eps: ['', Validators.required],
       sangre: ['', Validators.required],
-      alergias: [''],
+      alergia: [''],
       discapacidades: [''],
       enfermedadesCronicas: [''],
-      haTenidoCirugia: ['', Validators.required],
-      lesionesPrevias: [''],
-      vacunasCovid: ['', Validators.required],
-      nombresApellidos: ['', Validators.required],
+      cirugia: ['', Validators.required],
+      lesionesPrevia: [''],
+      vacunas: ['', Validators.required],
+      nombreApellido: ['', Validators.required],
       telefono: ['', [Validators.required, Validators.pattern('[0-9]*')]] 
     })
   }
+//metodo que envía el formulario, unicamente cuando todos los campos estan correctamente diligenciados
   irConfirmacion(){
-    this.display = 'none';
-    this.router.navigate(['/confirmacion'])
+    if(this.medicosForm.valid){
+      this.display = 'none';
+      this.router.navigate(['/confirmacion'])
+      console.log("datos:", this.medicosForm.value)
+    }
+    else{
+      alert("datos incorrectos o incompletos")
+      console.log("datos:", this.medicosForm.value)
+    }
   }
 }

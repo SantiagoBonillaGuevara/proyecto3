@@ -1,18 +1,17 @@
 <form class="form" [formGroup]="arteForm" (ngSubmit)="irDatosPersonales()">
     <p class="title">Inscripción a artes</p>
         <label>
-            Disciplina a la que desea entrar:
-            <select id="disciplina" class="input" type="text" placeholder="" required="">
+            Disciplina a la que desea entrar*:
+            <select  class="input" type="text" formControlName="disciplina" required="">
                 <option value="pintura">Pintura</option>
                 <option value="teatro">Teatro</option>
                 <option value="danza">Danza</option>
                 <option value="artes plasticas">Artes plasticas</option>
             </select>
         </label>
-        <br>
         <label>
-            Estilo en que el que se desea enfocar:
-            <select id="estilo" class="input" type="text" placeholder="" required="">
+            Estilo en que el que se desea enfocar*:
+            <select class="input" type="text" formControlName="estilo"required="">
                 <option value="P">Pintura al oleo</option>
                 <option value="P">Pintura acrilica</option>
                 <option value="P">Acuarela</option>
@@ -33,20 +32,18 @@
                 <option value="O">Otro</option>
             </select>
         </label> 
-        <br>
     <label>
-        Experiencia previa:
-        <select id="experiencia" class="input" type="text" placeholder="" required="">
+        Experiencia previa*:
+        <select class="input" type="text" formControlName="experiencia" required="">
             <option value="ADV">Avanzado</option>
             <option value="INT">Intermedio</option>
             <option value="BS">Basico</option>
             <option value="PR">Principiante</option>
         </select>
     </label> 
-    <br>
     <label>
-        Objetivo con el que entra:
-        <select id="objetivo" class="input" type="text" placeholder="" required="">
+        Objetivo con el que entra*:
+        <select class="input" type="text" formControlName="objetivo" required="">
             <option value="A">Aprender</option>
             <option value="M">Mejorar</option>
             <option value="C">Conocer gente</option>
@@ -54,39 +51,37 @@
             <option value="OT">Otro</option>
         </select>
     </label>
-    <br>
     <label>
-        ¿Cuenta con materiales?
-        <form>
-            <input  type="radio" id="si" name="materiales" value="si" [(ngModel)]="o">
-            <label for="si">Si</label>
-            
-            <input  type="radio" id="No" name="materiales" value="no" [(ngModel)]="o">
-            <label for="no">No</label>
-
-        </form>
+        ¿Cuenta con materiales?*
+        <label>
+            <input type="radio" formControlName="materiales" value="si">
+            Si
+          </label>
+    
+          <label>
+            <input type="radio" formControlName="materiales" value="no">
+            No
+          </label>
     </label>
-    <br>
     <label>
-        ¿Esta dispuesto a realizar proyectos en grupo?
-        <form>
-            <input type="radio" id="si" name="materiales" value="si">
-            <label for="si">Si</label>
-            
-            <input   type="radio" id="No" name="materiales" value="no">
-            <label for="no">No</label>
-        </form>
+        ¿Esta dispuesto a realizar proyectos en grupo?*
+        <label>
+            <input type="radio" formControlName="proyectosGrupo" value="si">
+            Si
+          </label>
+    
+          <label>
+            <input type="radio" formControlName="proyectosGrupo" value="no">
+            No
+          </label>
     </label>
-    <br>
     <label>
-        <label for="fecha">Fecha en la que va a empezar a asistir:</label>
+        <label for="fecha">Fecha en la que va a empezar a asistir*:</label>
         <input required type="date" class="input" id="fecha" formControlName="fecha" [min]="fechaActual">
     </label>
-    
-    <br>
     <label>
-        <label for="fecha">Horario en el que desea asistir:</label>
-        <select id="horario" class="input" type="text" placeholder="" required="">
+        <label for="horario">Horario en el que desea asistir*:</label>
+        <select class="input" type="text" formControlName="horario" required="">
             <option value="H">8:00</option>
             <option value="H">11:00</option>
             <option value="H">12:00</option>

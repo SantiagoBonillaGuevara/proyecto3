@@ -1,6 +1,6 @@
-import { Component,OnInit,HostBinding, ElementRef } from '@angular/core';
+import { Component,OnInit,HostBinding} from '@angular/core';
 import { Router } from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms'
+import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms'
 import { ServicioService } from '../servicio.service';
 
 @Component({
@@ -9,13 +9,14 @@ import { ServicioService } from '../servicio.service';
   styleUrls: ['./deporte.component.css']
 })
 export class DeporteComponent {
- deporteForm!:FormGroup;
- fechaActual: string;
-  ngOnInit(): void {
+ deporteForm!:FormGroup;//se crea el formulario
+ fechaActual: string;//variable que se va a encargar de guardar la fecha actual
+  ngOnInit(){
     
   }
   @HostBinding('style.display') display = 'block';
-  constructor(private fb: FormBuilder, private router: Router, private el: ElementRef, private s: ServicioService){
+
+  constructor(private fb: FormBuilder, private router: Router, private s: ServicioService){
     this.fechaActual = new Date().toISOString().split('T')[0];
 
     this.deporteForm = this.fb.group({
@@ -23,21 +24,39 @@ export class DeporteComponent {
       experiencia: ['', Validators.required],
       estatura: ['', Validators.required],
       peso: ['', Validators.required],
-      experiencia_previa: ['', Validators.required],
+      experienciaPrevia: ['', Validators.required],
       objetivo: ['', Validators.required],
       lesiones: [''],
       talla: ['', Validators.required],
-      fecha: [this.fechaActual, Validators.required]
+      fecha: [this.fechaActual, Validators.required],
+      horario: ['', Validators.required],
     });
-  }
-  irDatosPersonales(){
-    //extraer datos de los inputs
-    const c = (this.el.nativeElement.querySelector('#disciplina') as HTMLSelectElement);
-    this.s.clase = c.options[c.selectedIndex].text;
-    this.s.fecha = (this.el.nativeElement.querySelector('#fecha') as HTMLInputElement).value;
-    this.s.materiales="no";
 
-    this.display = 'none';
-    this.router.navigate(['/datosPersonales'])
+  }
+  private radioButtonValidator() {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+        const value = control.value;
+        if (value !== 'si' && value !== 'no') {
+            return { 'invalidRadioButton': true };
+        }
+        return null;
+  }
+}
+//metodo encargado de ir a formulario datos personales, unicamente cuando todos los datos estan correctamente diligenciados
+  irDatosPersonales(){
+    if(this.deporteForm.valid){
+      //extraer datos de los inputs
+      this.s.clase = this.deporteForm.value.disciplina
+      this.s.fecha = this.deporteForm.value.fecha
+      this.s.materiales="no";
+  
+      this.display = 'none';
+      this.router.navigate(['/datosPersonales'])
+      console.log("datos:", this.deporteForm.value)
+    }
+    else{
+      alert("error en el ingreso de los datos")
+      console.log("datos:", this.deporteForm.value)
+    }
   }
 }
