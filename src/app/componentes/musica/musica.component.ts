@@ -1,6 +1,6 @@
 import { Component,HostBinding, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms'
+import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms'
 import { ServicioService } from '../servicio.service';
 
 @Component({
@@ -9,13 +9,19 @@ import { ServicioService } from '../servicio.service';
   styleUrls: ['./musica.component.css']
 })
 export class MusicaComponent {
-  deporteForm!:FormGroup;
+  musicaForm:FormGroup;
   fechaActual: string;
+
+  ngOnInit() {
+
+  }
+
   @HostBinding('style.display') display = 'block';
+
   constructor(private fb: FormBuilder, private router: Router, private el: ElementRef, private s: ServicioService){
     this.fechaActual = new Date().toISOString().split('T')[0];
 
-    this.deporteForm = this.fb.group({
+    this.musicaForm = this.fb.group({
       clase: ['', Validators.required],
       experiencia: ['', Validators.required],
       modalidad: ['', Validators.required],
@@ -29,15 +35,20 @@ export class MusicaComponent {
   }
   irDatosPersonales(){
     //extraer datos de los inputs
-    this.s.materiales="Si";
-    if((this.el.nativeElement.querySelector('#instrumentoPropio') as HTMLSelectElement).value==="SI"){
-      this.s.materiales="No"
+    if(this.musicaForm.valid){
+      this.s.materiales = this.musicaForm.value.instrumentoPropio === 'SI' ? 'No' : 'Si'
+      
+      const c = (this.el.nativeElement.querySelector('#clase') as HTMLSelectElement);
+      this.s.clase = this.musicaForm.value.clase;
+      this.s.fecha = this.musicaForm.value.fecha;
+  
+      this.display = 'none';
+      this.router.navigate(['/datosPersonales'])
+      console.log("datos", this.musicaForm.value)
     }
-    const c = (this.el.nativeElement.querySelector('#clase') as HTMLSelectElement);
-    this.s.clase = c.options[c.selectedIndex].text;
-    this.s.fecha = (this.el.nativeElement.querySelector('#fecha') as HTMLInputElement).value;
-
-    this.display = 'none';
-    this.router.navigate(['/datosPersonales'])
+    else{
+      alert("Los datos ingresados no son correctos")
+      console.log("datos", this.musicaForm.value)
+    }
   }
 }

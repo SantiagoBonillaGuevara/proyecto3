@@ -1,4 +1,4 @@
-import { Component,OnInit,HostBinding, ElementRef } from '@angular/core';
+import { Component,OnInit,HostBinding} from '@angular/core';
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms'
 import { ServicioService } from '../servicio.service';
@@ -19,7 +19,7 @@ ngOnInit() {
   @HostBinding('style.display') display = 'block';
 
   o: string='';
-  constructor(private fb: FormBuilder, private router: Router, private el: ElementRef, private s: ServicioService){
+  constructor(private fb: FormBuilder, private router: Router, private s: ServicioService){
     this.fechaActual = new Date().toISOString().split('T')[0];
 
     this.arteForm = this.fb.group({
@@ -28,39 +28,27 @@ ngOnInit() {
       experiencia: ['', Validators.required],
       objetivo: ['', Validators.required],
       materiales: ['', Validators.required],
-      proyectosEnGrupo: ['', Validators.required],
+      proyectosGrupo: ['', Validators.required],
       fecha: [this.fechaActual, Validators.required],
       horario: ['', Validators.required],
-      siMateriales: ['', this.radioButtonValidator()],
-      noMateriales: ['', this.radioButtonValidator()],
-      siProyectos: ['', this.radioButtonValidator()],
-      noProyectos: ['', this.radioButtonValidator()],
   });
   }
 
-  private radioButtonValidator() {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-        const value = control.value;
-        if (value !== 'si' && value !== 'no') {
-            return { 'invalidRadioButton': true };
-        }
-        return null;
-    };
-}
 //metodo encargado de ir al formulario datos personales, unicamente cuando todos los campos obligatorios estan llenos
   irDatosPersonales(){
     //extraer datos de los inputs
     if(this.arteForm.valid){
-      this.s.materiales="si";
+      this.s.materiales=this.arteForm.value.materiales === 'si' ? 'si' : 'no'
       if(this.o==="si"){
         this.s.materiales="no";
       }
-      const c = (this.el.nativeElement.querySelector('#disciplina') as HTMLSelectElement);
-      this.s.clase = c.options[c.selectedIndex].text;
-      this.s.fecha = (this.el.nativeElement.querySelector('#fecha') as HTMLInputElement).value;
+
+      this.s.clase = this.arteForm.value.disciplina
+      this.s.fecha = this.arteForm.value.fecha;
   
       this.display = 'none';
       this.router.navigate(['/datosPersonales'])
+      console.log("valores", this.arteForm.value)
 
     }
     else{

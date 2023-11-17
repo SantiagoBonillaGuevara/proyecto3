@@ -1,22 +1,22 @@
-<form [formGroup]="formulario" class="form" (ngSubmit)="irDatosMedicos()">
+<form [formGroup]="datosForm" class="form" (ngSubmit)="irDatosMedicos()">
     <p class="title">Tus datos </p>
     <div class="flex">
         <label>
-            <input id="nombre" class="input" type="text" placeholder="" required="">
+            <input formControlName="nombre" class="input" type="text" placeholder="" required="">
             <span>Nombre</span>
         </label>
         <label>
-            <input id="apellido" class="input" type="text" placeholder="" required="">
+            <input formControlName="apellido" class="input" type="text" placeholder="" required="">
             <span>Apellido</span>
         </label>
     </div>  
     <label>
-        <input id="edad" class="input" type="number" placeholder="" required="">
+        <input formControlName="edad"class="input" type="number" placeholder="" required="">
         <span>edad</span>
     </label> 
     <label>
         Genero:
-        <select id="genero" class="input" type="text" placeholder="" required="">
+        <select formControlName="genero" class="input" type="text" placeholder="" required="">
             <option value="H">Hombre</option>
             <option value="M">Mujer</option>
             <option value="O">Otro</option>
@@ -24,7 +24,7 @@
     </label> 
     <label>
         Tipo de documento:
-        <select id="tipoDocumento" class="input" type="text" placeholder="" required="">
+        <select formControlName="tipoDocumento" class="input" type="text" placeholder="" required="">
             <option value="TI">Tarjeta de identidad</option>
             <option value="CC">Cedula de ciudadania</option>
             <option value="CN">Certificado de nacionalidad</option>
@@ -32,23 +32,23 @@
         </select>
     </label> 
     <label>
-        <input id="identificacion" class="input" type="number" placeholder="" required="">
+        <input formControlName="identificacion"class="input" type="number" placeholder="" required="">
         <span>Numero de documento</span>
     </label> 
     <label>
-        <input id="telefono" class="input" type="number" placeholder="" required="">
+        <input formControlName="telefono" class="input" type="number" placeholder="" required="">
         <span>Numero de telefono</span>
     </label> 
     <label>
-        <input id="correo" class="input" type="email" placeholder="" required="">
+        <input formControlName="correo" class="input" type="email" placeholder="" required="">
         <span>Email</span>
     </label> 
     <label>
-        <input id="municipio" class="input" type="text" placeholder="" required="">
+        <input formControlName="municipio" class="input" type="text" placeholder="" required="">
         <span>Municipio</span>
     </label>
     <label>
-        <input id="direccion" class="input" type="text" placeholder="" required="">
+        <input formControlName="direccion" class="input" type="text" placeholder="" required="">
         <span>Direccion</span>
     </label>
     <button class="submit">Siguiente</button>

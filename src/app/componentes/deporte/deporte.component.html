@@ -1,9 +1,8 @@
 <form class="form" [formGroup]="deporteForm" (ngSubmit)="irDatosPersonales()">
     <p class="title">Inscripción a deportes</p>
-    <h6>Los campos obligatorios tienen un *</h6>
         <label>
             Disciplina a la que desea entrar*:
-            <select id="disciplina" class="input" type="text" placeholder="" required="">
+            <select formControlName="disciplina" class="input" type="text" placeholder="" required="">
                     <option value="DB">Baloncesto</option>
                     <option value="DV">Voleibol</option>
                     <option value="DF">Futbol</option>
@@ -14,10 +13,9 @@
                 <option value="DP">Patinaje</option>
             </select>
         </label>
-        <br>
     <label>
         Experiencia previa*:
-        <select id="experiencia" class="input" type="text" placeholder="" required="">
+        <select formControlName="experiencia" class="input" type="text" placeholder="" required="">
             <option value="ADV">Avanzado</option>
             <option value="INT">Intermedio</option>
             <option value="BS">Basico</option>
@@ -26,7 +24,7 @@
     </label> 
     <label>
         Estatura*:
-        <select id="estatura" class="input" type="text" placeholder="" required="">
+        <select formControlName="estatura" class="input" type="text" placeholder="" required="">
             <option value="uno">1.30m-1.50m</option>
             <option value="dos">1-50m-1.70m</option>
             <option value="tres">1.70m-1.90m</option>
@@ -35,28 +33,28 @@
     </label> 
     <label>
         Peso*:
-        <select id="peso" class="input" type="text" placeholder="" required="">
+        <select formControlName="peso" class="input" type="text" placeholder="" required="">
             <option value="uno">40kg-60kg</option>
             <option value="dos">60kg-80kg</option>
             <option value="tres">80kg-100kg</option>
             <option value="cuatro">100kg-120kg</option>
         </select>
     </label> 
-    <br>
     <label>
         ¿Ha practicado algún deporte antes?*
-        <form>
-            <input  type="radio" id="si" name="experiencia" value="si">
-            <label for="si">Si</label>
-            
-            <input  type="radio" id="No" name="experiencia" value="no">
-            <label for="no">No</label>
-
-        </form>
+        <label>
+            <input type="radio" formControlName="experienciaPrevia" value="si">
+            Si
+          </label>
+    
+          <label>
+            <input type="radio" formControlName="experienciaPrevia" value="no">
+            No
+          </label>
     </label>
     <label>
         Objetivo con el que entra*:
-        <select id="objetivo" class="input" type="text" placeholder="" required="">
+        <select formControlName="objetivo" class="input" type="text" placeholder="" required="">
             <option value="A">Aprender</option>
             <option value="M">Mejorar</option>
             <option value="C">Conocer gente</option>
@@ -64,15 +62,13 @@
             <option value="OT">Otro</option>
         </select>
     </label>
-    <br>
     <label>
-            <input class="input" type="text"  id="lesiones">
+            <input class="input" type="text"  formControlName="lesiones">
             <span>Lesiones previas</span>
     </label>
-    <br>
     <label>
         Seleccione su talla*:
-        <select id="talla" class="input" type="text" placeholder="" required="">
+        <select formControlName="talla" class="input" type="text" placeholder="" required="">
             <option value="H">XS</option>
             <option value="H">S</option>
             <option value="H">M</option>
@@ -80,14 +76,13 @@
             <option value="H">XL</option>
         </select>
     </label>
-    <br>
     <label>
         <label for="fecha">Fecha en la que va a empezar a asistir*:</label>
         <input required type="date" class="input" id="fecha" formControlName="fecha" [min]="fechaActual">
     </label>
     <label>
         <label for="horario">Horario en el que desea asistir*:</label>
-        <select id="horario" class="input" type="text" placeholder="" required="">
+        <select formControlName="horario" class="input" type="text" placeholder="" required="">
             <option value="H">9:00</option>
             <option value="H">10:00</option>
             <option value="H">12:00</option>
@@ -95,7 +90,6 @@
             <option value="H">18:00</option>
         </select>
     </label>
-    <br>
 
     <button class="submit" type="submit">Siguiente</button>
 
