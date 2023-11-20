@@ -55,7 +55,7 @@ export class DeporteComponent {
       console.log("datos:", this.deporteForm.value)
     }
     else{
-      alert("error en el ingreso de los datos")
+      alert("Error en el ingreso de los datos, verifique los campos")
       console.log("datos:", this.deporteForm.value)
     }
   }

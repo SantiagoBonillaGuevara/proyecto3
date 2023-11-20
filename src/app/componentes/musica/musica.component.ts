@@ -47,7 +47,7 @@ export class MusicaComponent {
       console.log("datos", this.musicaForm.value)
     }
     else{
-      alert("Los datos ingresados no son correctos")
+      alert("Los datos ingresados no son correctos, revise los campos")
       console.log("datos", this.musicaForm.value)
     }
   }
