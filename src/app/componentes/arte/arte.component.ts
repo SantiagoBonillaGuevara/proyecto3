@@ -52,7 +52,7 @@ ngOnInit() {
 
     }
     else{
-      alert("datos erroneos")
+      alert("Los datos ingresados no son correctos, revise los campos")
       console.log("valores", this.arteForm.value)
     }
   }
